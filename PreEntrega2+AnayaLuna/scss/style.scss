@@ -1,0 +1,51 @@
+// Include all of Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Additional custom code here
+
+/*FONT*/
+/*
+@font-face {
+    font-family: 'coolvetica';
+    src: url(../fonts/coolvetica.ttf);
+}
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+
+
+/*STYLE*/
+
+/*RESET CSS*/
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+%container-flex-properties {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+}
+
+> .container,
+> .container-fluid {
+    @extend %container-flex-properties;
+}
+
+@each $breakpoint, $container-max-width in $container-max-widths {
+    > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+    @extend %container-flex-properties;
+    }
+}
